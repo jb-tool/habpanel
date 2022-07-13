@@ -1,0 +1,145 @@
+<style>
+
+    .temperature-table {
+        width: 100%;
+        height: 100%;
+        padding: 10;
+        border: 0;
+    }
+    .temperature-table td {
+        border: 0 solid white;
+    }
+
+    .sub-table {
+        width: 100%;
+        height: 100%;
+        padding: 10;
+        border: 0;
+    }
+
+    .sub-table td {
+        border: 0 solid white;
+    }
+
+    .label-row {
+        height: 10%;
+        padding: 0;
+    }
+    .content-row {
+        height: 90%;
+        padding: 0;
+    }
+
+    .temperature-row {
+        height: 50%;
+        padding: 0;
+    }
+
+    .humidity-row {
+        text-align: center;
+        height: 30%;
+        padding: 0;
+    }
+
+    .label-text {
+        font-size: 1em;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .main-temperature-col {
+        text-align: right;
+        vertical-align: top;
+        line-height: 1em;
+        width: 50%;
+        padding-top: 0;
+        white-space: nowrap;
+    }
+
+    .main-temperature-text {
+    }
+
+    .target-temperature-text {
+        font-size: .9em;
+    }
+
+    .main-temperature-sign {
+        font-size: 1em;
+        text-align: left;
+        width: 25%;
+        vertical-align: top;
+    }
+
+    .main-temperature-icon {
+        text-align: center;
+        width: 25%;
+        vertical-align: top;
+        padding-top: 0;
+    }
+
+    .main-humidity-text {
+        font-size: 1.45em;
+        text-align: right;
+        line-height: 1em;
+        vertical-align: top;
+        width: 50%;
+    }
+
+    .main-humidity-sign {
+        font-size: 0.75em;
+        text-align: left;
+        width: 25%;
+        vertical-align: top;
+    }
+
+    .main-humidity-icon {
+        text-align: center;
+        width: 25%;
+        vertical-align: top;
+        padding-top: 0;
+        padding-right: 0;
+    }
+</style>
+<div>
+    <table class="temperature-table">
+        <tr class="label-row">
+            <td class="label-text">{{config.label}}</td>
+        </tr>
+
+        <tr class="content-row">
+            <td>
+
+                <table class="sub-table">
+                    <tr class="temperature-row">
+                        <td class="main-temperature-icon">
+                            <widget-icon iconset="'eclipse-smarthome-classic'" icon="'temperature'" size="20"/>
+                        </td>
+                        <td class="main-temperature-col">
+                            <span class="main-temperature-text">{{'%.1f' | sprintf:itemValue(config.device + '.1.ACTUAL_TEMPERATURE').split(' ')[0]}}</span> / <span class="target-temperature-text">{{'%.1f' | sprintf:itemValue(config.device + '.1.SET_POINT_TEMPERATURE').split(' ')[0]}}</span>
+                        </td>
+                        <td class="main-temperature-sign">
+                            &nbsp;°C
+                        </td>
+                    </tr>
+                </table>
+
+                <div>
+                    <table class="sub-table">
+                        <tr class="humidity-row">
+                            <td class="main-humidity-icon">
+                                <widget-icon iconset="'eclipse-smarthome-classic'" icon="'humidity'" size="18"/>
+                            </td>
+                            <td class="main-humidity-text">
+                                {{'%.1f' | sprintf:itemValue(config.device + '.1.HUMIDITY').split(' ')[0]}}
+                            </td>
+                            <td class="main-humidity-sign">
+                                &nbsp;%
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+</div>

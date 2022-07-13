@@ -1,0 +1,17 @@
+{
+  "name": "temperature",
+  "author": "jb-tool",
+  "description": "Simple Widget to display temperature and humidity",
+  "settings": [
+    {
+      "type": "string",
+      "id": "label",
+      "label": "Label"
+    },
+    {
+      "type": "item",
+      "id": "device",
+      "label": "Device"
+    }
+  ]
+}
